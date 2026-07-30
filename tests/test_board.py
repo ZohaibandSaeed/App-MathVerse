@@ -1,5 +1,5 @@
 import os
-from mathverse import MathBoard
+from mathly import MathBoard
 
 def test_board_initialization():
     board = MathBoard("Test")

@@ -1,6 +1,6 @@
 import os
-from mathverse import MathBoard
-from mathverse.algebra import NumberLine, Grid2D
+from mathly import MathBoard
+from mathly.algebra import NumberLine, Grid2D
 
 def test_algebra_number_line(tmp_path):
     board = MathBoard("Inequality Solution")

@@ -1,6 +1,6 @@
 import os
-from mathverse import MathBoard
-from mathverse.calculus import CalculusGraph
+from mathly import MathBoard
+from mathly.calculus import CalculusGraph
 
 def test_advanced_calculus(tmp_path):
     board = MathBoard("Advanced Calculus test")

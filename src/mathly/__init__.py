@@ -1,5 +1,5 @@
 """
-MathVerse Library
+Mathly Library
 """
 from .core.board import MathBoard
 from .algebra.number_line import NumberLine

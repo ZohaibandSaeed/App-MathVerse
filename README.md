@@ -1,6 +1,6 @@
-# MathVerse
+# Mathly
 
-MathVerse is a powerful, open-source, LLM-friendly Python library designed to act as a visual rendering engine for math. It makes it incredibly easy for Large Language Models (like Gemini) and developers to generate step-by-step mathematical solutions and beautiful geometric/algebraic diagrams.
+Mathly is a powerful, open-source, LLM-friendly Python library designed to act as a visual rendering engine for math. It makes it incredibly easy for Large Language Models (like Gemini) and developers to generate step-by-step mathematical solutions and beautiful geometric/algebraic diagrams.
 
 ## Features
 - **Step-by-step Equation Rendering:** Render mathematical steps like a digital whiteboard.
@@ -9,10 +9,10 @@ MathVerse is a powerful, open-source, LLM-friendly Python library designed to ac
 
 ## Installation
 
-You can install MathVerse via pip:
+You can install Mathly via pip:
 
 ```bash
-pip install mathverse
+pip install mathly
 ```
 
 ## Quick Start
@@ -20,7 +20,7 @@ pip install mathverse
 Here is a quick example of how to solve an inequality and draw a number line:
 
 ```python
-from mathverse import MathBoard, NumberLine
+from mathly import MathBoard, NumberLine
 
 # Initialize the board
 board = MathBoard("Solving an Inequality")
@@ -42,7 +42,7 @@ board.render("result.png")
 ## Calculus Example
 
 ```python
-from mathverse import MathBoard, CalculusGraph
+from mathly import MathBoard, CalculusGraph
 
 board = MathBoard("Calculus Example")
 cg = CalculusGraph(x_range=(-5, 5))

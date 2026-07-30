@@ -1,6 +1,6 @@
 import os
-from mathverse import MathBoard
-from mathverse.calculus import CalculusGraph
+from mathly import MathBoard
+from mathly.calculus import CalculusGraph
 
 def test_calculus_graph(tmp_path):
     board = MathBoard("Definite Integral")
