@@ -20,6 +20,10 @@ class Grid2D:
         """Draw a line from equation y = mx + c"""
         self.elements.append({"type": "line_eq", "m": m, "c": c, "color": color, "label": label})
         
+    def plot_function(self, func, x_range=None, color: str = "blue", label: str = "", points: int = 400):
+        """Plot an arbitrary function y = f(x)."""
+        self.elements.append({"type": "function", "func": func, "x_range": x_range, "color": color, "label": label, "points": points})
+        
     def highlight_intersection(self, m1, c1, m2, c2):
         """Finds and highlights intersection of two lines."""
         if m1 == m2: return # Parallel
@@ -75,6 +79,11 @@ class Grid2D:
             elif el["type"] == "line_eq":
                 x_vals = np.array(self.x_range)
                 y_vals = el["m"] * x_vals + el["c"]
+                inset_ax.plot(x_vals, y_vals, color=el["color"], label=f"${el['label']}$" if el["label"] else None, zorder=4)
+            elif el["type"] == "function":
+                func_x_range = el["x_range"] if el["x_range"] else self.x_range
+                x_vals = np.linspace(func_x_range[0], func_x_range[1], el.get("points", 400))
+                y_vals = np.array([el["func"](x) for x in x_vals])
                 inset_ax.plot(x_vals, y_vals, color=el["color"], label=f"${el['label']}$" if el["label"] else None, zorder=4)
             elif el["type"] == "circle":
                 circle = patches.Circle((el["x"], el["y"]), el["r"], edgecolor=el["color"], 
