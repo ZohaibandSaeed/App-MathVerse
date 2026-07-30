@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "mathly"
-version = "0.1.1"
+version = "0.1.2"
 description = "A simple, LLM-friendly math rendering library for Algebra and Calculus."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [
-    { name = "MathLibrary Creator" }
+    { name = "Muhammad Zohaib Saeed" }
 ]
 dependencies = [
     "matplotlib>=3.5.0",
