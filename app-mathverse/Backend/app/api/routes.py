@@ -4,6 +4,7 @@ from app.rags.graph import build_graph
 from app.utils.code_runner import execute_mathly_code
 import uuid
 import os
+import tempfile
 
 router = APIRouter()
 # We compile the graph once when the app starts
@@ -29,10 +30,9 @@ async def solve_math_problem(request: MathRequest):
         final_code = result["final_code"]
         solution_text = result["solution_text"]
         
-        # Prepare output path for the image
+        # Prepare output path for the image using system temp directory
         image_filename = f"output_{uuid.uuid4().hex}.png"
-        output_path = os.path.join(os.path.dirname(__file__), "../../../../", image_filename)
-        output_path = os.path.abspath(output_path)
+        output_path = os.path.join(tempfile.gettempdir(), image_filename)
         
         # Execute the python code securely and get base64
         image_base64 = execute_mathly_code(final_code, output_path)
@@ -55,8 +55,7 @@ async def run_playground(request: PlaygroundRequest):
     """
     try:
         image_filename = f"playground_{uuid.uuid4().hex}.png"
-        output_path = os.path.join(os.path.dirname(__file__), "../../../../", image_filename)
-        output_path = os.path.abspath(output_path)
+        output_path = os.path.join(tempfile.gettempdir(), image_filename)
         
         # We explicitly replace any instance of 'output.png' or similar with our output_path 
         # so it saves to the right place and we can read it.
