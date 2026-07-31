@@ -1,0 +1,9 @@
+fastapi[standard]
+python-dotenv
+langchain
+langgraph
+langchain-google-genai
+langchain-groq
+pydantic
+# And of course, our very own library!
+mathly

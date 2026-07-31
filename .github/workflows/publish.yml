@@ -25,10 +25,12 @@ jobs:
         pip install build twine
 
     - name: Build package
-      run: python -m build
+      run: |
+        cd mathly
+        python -m build
 
     - name: Publish to PyPI
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-      run: twine upload dist/*
+      run: twine upload mathly/dist/*

@@ -28,6 +28,6 @@ ENV/
 .idea/
 *.swp
 
-app-mathverse
-.app-mathverse
-/app-mathverse
+# app-mathverse
+# .app-mathverse
+# /app-mathverse

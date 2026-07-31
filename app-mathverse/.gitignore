@@ -1,0 +1,40 @@
+# ==============================
+# General / OS
+# ==============================
+.DS_Store
+.env
+.env.local
+.env.*.local
+
+# ==============================
+# Backend (Python / FastAPI)
+# ==============================
+Backend/venv/
+Backend/env/
+Backend/__pycache__/
+Backend/*.pyc
+Backend/*.pyo
+Backend/*.pyd
+Backend/.pytest_cache/
+Backend/output*.png
+Backend/playground*.png
+
+# ==============================
+# Frontend (Node.js / React / Vite)
+# ==============================
+Frontend/node_modules/
+Frontend/dist/
+Frontend/build/
+Frontend/.npm/
+Frontend/npm-debug.log*
+Frontend/yarn-debug.log*
+Frontend/yarn-error.log*
+Frontend/.vite/
+
+# ==============================
+# Editor / IDE
+# ==============================
+.vscode/
+.idea/
+*.swp
+*.swo
