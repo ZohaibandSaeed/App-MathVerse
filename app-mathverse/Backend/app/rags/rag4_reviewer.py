@@ -1,5 +1,5 @@
 import os
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
 from langchain_core.messages import SystemMessage, HumanMessage
 from app.rags.state import PipelineState
 from app.rags.prompt_manager import get_system_prompt
@@ -7,8 +7,8 @@ from app.rags.prompt_manager import get_system_prompt
 def review_code(state: PipelineState) -> dict:
     generated_code = state["generated_code"]
     
-    api_key = os.environ.get("rag4_GEMINI_API_KEY", "")
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0, google_api_key=api_key)
+    api_key = os.environ.get("rag4_GROQ_API_KEY", "")
+    llm = ChatGroq(model_name="openai/gpt-oss-120b", temperature=0, groq_api_key=api_key)
     
     cheat_sheet = get_system_prompt()
     sys_msg = SystemMessage(

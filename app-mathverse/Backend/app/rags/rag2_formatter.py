@@ -8,7 +8,8 @@ def format_json(state: PipelineState) -> dict:
     solution_text = state["solution_text"]
     
     # We use llama3-70b-8192 as the standard fast Groq model.
-    llm = ChatGroq(model_name="openai/gpt-oss-120b", temperature=0)
+    api_key = os.environ.get("GROQ_API_KEY", "")
+    llm = ChatGroq(model_name="openai/gpt-oss-120b", temperature=0, groq_api_key=api_key)
     
     sys_msg = SystemMessage(
         content="""You are an expert Data Formatter. Your job is to take a math solution and convert it into a strict JSON format.
