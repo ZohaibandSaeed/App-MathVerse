@@ -41,6 +41,9 @@ class CalculusGraph:
     def plot_hole(self, x: float, y: float, color="blue"):
         self.elements.append({"type": "hole", "x": x, "y": y, "color": color})
 
+    def plot_coordinate(self, x: float, y: float, label: str = "", color="black"):
+        self.elements.append({"type": "point", "x": x, "y": y, "label": label, "color": color})
+
     def plot_parametric(self, x_expr: str, y_expr: str, t_range: tuple, color="purple", label=""):
         self.elements.append({"type": "parametric", "x_expr": x_expr, "y_expr": y_expr, "t_range": t_range, "color": color, "label": label})
 
@@ -133,6 +136,11 @@ class CalculusGraph:
                     
             elif el["type"] == "hole":
                 inset_ax.plot(el["x"], el["y"], marker='o', markerfacecolor='white', markeredgecolor=el["color"], markersize=8, markeredgewidth=2, zorder=6)
+                
+            elif el["type"] == "point":
+                inset_ax.plot(el["x"], el["y"], marker='o', color=el["color"], markersize=6, zorder=6)
+                if el["label"]:
+                    inset_ax.text(el["x"], el["y"] + 0.5, f"${el['label']}$", color=el["color"], ha='center', zorder=6)
                 
             elif el["type"] == "parametric":
                 t_vals = np.linspace(el["t_range"][0], el["t_range"][1], 1000)

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "mathly"
-version = "0.1.2"
+version = "0.1.3"
 description = "A simple, LLM-friendly math rendering library for Algebra and Calculus."
 readme = "README.md"
 requires-python = ">=3.9"

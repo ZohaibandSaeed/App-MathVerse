@@ -81,10 +81,17 @@ class Grid2D:
                 y_vals = el["m"] * x_vals + el["c"]
                 inset_ax.plot(x_vals, y_vals, color=el["color"], label=f"${el['label']}$" if el["label"] else None, zorder=4)
             elif el["type"] == "function":
-                func_x_range = el["x_range"] if el["x_range"] else self.x_range
-                x_vals = np.linspace(func_x_range[0], func_x_range[1], el.get("points", 400))
-                y_vals = np.array([el["func"](x) for x in x_vals])
-                inset_ax.plot(x_vals, y_vals, color=el["color"], label=f"${el['label']}$" if el["label"] else None, zorder=4)
+                xr = el["x_range"] or self.x_range
+                x_vals = np.linspace(xr[0], xr[1], el["points"])
+                
+                # Check if func is a string expression or a callable
+                if isinstance(el["func"], str):
+                    env = {"x": x_vals, "np": np, "math": math}
+                    y_vals = eval(el["func"], {"__builtins__": {}}, env)
+                else:
+                    y_vals = np.array([el["func"](x) for x in x_vals])
+                    
+                inset_ax.plot(x_vals, y_vals, color=el["color"], label=f"${el['label']}$" if el["label"] else None, lw=2, zorder=3)
             elif el["type"] == "circle":
                 circle = patches.Circle((el["x"], el["y"]), el["r"], edgecolor=el["color"], 
                                         facecolor=el["color"] if el["fill"] else "none", 
