@@ -8,7 +8,7 @@ def review_code(state: PipelineState) -> dict:
     generated_code = state["generated_code"]
     
     api_key = os.environ.get("rag4_GEMINI_API_KEY", "")
-    llm = ChatGoogleGenerativeAI(model="gemini-3.6-flash", temperature=0, google_api_key=api_key)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0, google_api_key=api_key)
     
     cheat_sheet = get_system_prompt()
     sys_msg = SystemMessage(
@@ -28,5 +28,9 @@ CRITICAL INSTRUCTIONS FOR REVIEW:
     
     response = llm.invoke([sys_msg, human_msg])
     
-    final_code = response.content.replace("```python", "").replace("```", "").strip()
+    content = response.content
+    if isinstance(content, list):
+        content = "".join([c.get("text", "") if isinstance(c, dict) else str(c) for c in content])
+        
+    final_code = content.replace("```python", "").replace("```", "").strip()
     return {"final_code": final_code}
