@@ -8,7 +8,7 @@ def generate_code(state: PipelineState) -> dict:
     solution_json = state["solution_json"]
     
     api_key = os.environ.get("rag3_GEMINI_API_KEY", "")
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0, google_api_key=api_key)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0, google_api_key=api_key)
     
     cheat_sheet = get_system_prompt()
     sys_msg = SystemMessage(content=cheat_sheet)
