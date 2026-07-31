@@ -7,7 +7,8 @@ def solve_math(state: PipelineState) -> dict:
     question = state["question"]
     # User requested Gemini 2.5 Pro. We use gemini-1.5-pro or 2.5-pro based on API availability.
     # We will use "gemini-1.5-pro" as it's the stable pro model, but can be changed.
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.1)
+    api_key = os.environ.get("rag1_GEMINI_API_KEY", "")
+    llm = ChatGoogleGenerativeAI(model="gemini-3.6-flash", temperature=0.1, google_api_key=api_key)
     
     sys_msg = SystemMessage(
         content="You are an expert mathematical solver. Solve the user's question step-by-step in pure mathematical language. Do not skip any step. Do NOT write code. Do NOT format as JSON. Just provide the logical mathematical steps."
