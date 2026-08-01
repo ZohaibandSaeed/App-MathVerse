@@ -54,6 +54,8 @@ MathVerse/
 
 ## 🌟 1. Mathly (The Library)
 
+`To explore further mathly please visit: https://github.com/ZohaibandSaeed/MathVerse.git`
+
 `mathly` is built to be the easiest tool for Large Language Models (LLMs) to use when they want to draw math. Instead of struggling with complex Matplotlib configurations, AI can use `mathly`'s simple classes like `CalculusGraph`, `Grid2D`, and `NumberLine` to generate high-precision mathematical visualisations.
 
 ### Key Features:
